@@ -11,7 +11,7 @@ function App() {
   }, []);
 
   const fetchStudents = async () => {
-    const response = await fetch('http://localhost:5000/api/students');
+    const response = await fetch('/api/students');
     const data = await response.json();
     setStudents(data);
   };
@@ -19,8 +19,8 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editing 
-      ? `http://localhost:5000/api/students/${editing}`
-      : 'http://localhost:5000/api/students';
+      ? `/api/students/${editing}`
+      : '/api/students';
     
     await fetch(url, {
       method: editing ? 'PUT' : 'POST',
@@ -39,7 +39,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/students/${id}`, { method: 'DELETE' });
+    await fetch(`/api/students/${id}`, { method: 'DELETE' });
     fetchStudents();
   };
 
